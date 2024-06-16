@@ -2,6 +2,8 @@ package com.example.understanding_connections.controllers;
 
 import com.example.understanding_connections.models.Student;
 import com.example.understanding_connections.repositories.StudentRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class StudentController {
 
     @Autowired
+    @Setter
+    @Getter
     private StudentRepository studentRepository;
 
     @GetMapping("/{id}")
@@ -42,8 +46,7 @@ public class StudentController {
             return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
         }
         Student student = studentOptional.get();
-        student.setId(studentDetails.getId());
-        // update other fields as necessary
+        student.setName(studentDetails.getName());
         studentRepository.save(student);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
