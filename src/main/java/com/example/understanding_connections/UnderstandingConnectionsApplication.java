@@ -1,7 +1,8 @@
 package com.example.understanding_connections;
 
-import com.example.understanding_connections.inheritancerelations.tableperclass.Mentor;
-import com.example.understanding_connections.inheritancerelations.tableperclass.MentorRepository;
+import com.example.understanding_connections.inheritancerelations.joinedtable.Mentor;
+import com.example.understanding_connections.inheritancerelations.joinedtable.MentorRepository;
+import com.example.understanding_connections.inheritancerelations.joinedtable.Students;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +17,7 @@ public class UnderstandingConnectionsApplication implements CommandLineRunner {
 
 	private final MentorRepository mentorRepository;
 
-	public UnderstandingConnectionsApplication(@Qualifier("TPC-MentorRepository") MentorRepository mentorRepository) {
+	public UnderstandingConnectionsApplication(@Qualifier("JT-MentorRepository") MentorRepository mentorRepository) {
 		this.mentorRepository = mentorRepository;
 	}
 
@@ -27,12 +28,24 @@ public class UnderstandingConnectionsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Mentor mentor = new Mentor();
-		mentor.setMentor_session("mentor session");
+		mentor.setMentorSession("mentor session");
 		mentor.setEmail("mentor email");
 		mentor.setName("mentor name");
 
 		mentorRepository.save(mentor);
 
 		logger.info("Mentor saved: " + mentor);
+
+		Students student = new Students();
+		student.setGrade("student grade");
+		student.setEmail("student email");
+		student.setName("student name");
+
+		mentorRepository.save(student);
+
+		logger.info("Student saved: " + student);
+
+
+
 	}
 }
