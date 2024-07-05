@@ -23,6 +23,26 @@ public class DataLoader implements CommandLineRunner {
         student2.setName("Jane Smith");
         studentRepository.save(student2);
 
-        // Add more initial data as needed
+        Student student3 = new Student();
+        student3.setName("Alice Johnson");
+        studentRepository.save(student3);
+
+        Student student4 = new Student();
+        student4.setName("Bob Brown");
+        studentRepository.save(student4);
+
+        Student student5 = new Student();
+        student5.setName("Charlie White");
+        studentRepository.save(student5);
+
+        Student student6 = new Student();
+        student6.setName("David Black");
+        studentRepository.save(student6);
+
+        Student student7 = new Student();
+        student7.setName("Eve Green");
+        studentRepository.save(student7);
+
+
     }
 }
