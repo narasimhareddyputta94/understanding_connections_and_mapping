@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 
-@Entity
+@Entity(name = "MS-Ta")
 public class Ta  extends User{
 
     private String ta_session;

@@ -8,8 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 
-@Entity
-public class Student  extends User{
+@Entity(name = "MS-Students")
+public class Students extends User{
 
     private String grade;
 }
